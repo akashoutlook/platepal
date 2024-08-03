@@ -1,2 +1,3 @@
-# platepal
-Restaurant Management Software
+# PlatePal
+
+![PlatePal](PlatePal_Banner.png)
