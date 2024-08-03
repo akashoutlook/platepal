@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: platepal-config-service
+  profiles:
+    active: jdbc
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/DEMOPDB
+    driverClassName: oracle.jdbc.OracleDriver
+    username: platepal_config
+    password: platepal_config
+  flyway:
+    baseline-on-migrate: true
+  cloud:
+    config:
+      server:
+        jdbc:
+          sql: SELECT KEY, VALUE from PROPERTIES where APPLICATION=? and PROFILE=? and LABEL=?
+          defaultLabel: jdbc
+          order: 1
+
+server:
+  port: 7001
+  servlet:
+    context-path: /platepal-config-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:7002/platepal-discovery-service/eureka
+  instance:
+    prefer-ip-address: false
