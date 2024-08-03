@@ -1,0 +1,2 @@
+# platepal
+Restaurant Management Software
